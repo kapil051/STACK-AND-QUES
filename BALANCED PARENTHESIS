@@ -1,0 +1,65 @@
+
+#include<stack>
+
+bool isBalanced(string input) 
+{
+
+  //{a+(b-c)*d}=>true
+
+  //{a+(b-c})
+
+  //{a+(b-c)+d
+
+  stack<char> s1;
+
+    for(int i=0;i<input.size();i++){
+
+//IF BRACKET IS OPENING PUSH THAT INTO THE STACK
+
+           if(input[i]=='{'||input[i]=='['||input[i]=='('){
+               s1.push(input[i]);
+           }
+
+//IF BRACKET IS CLOSE THEN CHECK THE TOP OF THE STACK
+
+           else if(input[i]==')'||input[i]=='}'||input[i]==']'){
+
+               if(input[i]==')'){
+
+                  if(s1.size()==0) return false;
+
+                else if(s1.top()!='(')  return false;
+                   
+                   else s1.pop();
+               }
+
+                if(input[i]==']'){
+ 
+                 if(s1.size()==0) return false;
+
+                else  if(s1.top()!='[')  return false;
+                  
+                   else s1.pop();
+               }
+
+                 if(input[i]=='}'){
+
+                 if(s1.size()==0) return false;
+
+               else if(s1.top()!='{')  return false;
+
+                  else s1.pop();
+               }
+           }
+
+    }
+
+      //IF STACK STILL NOT EMPTY
+      //{a+(b-c)+d
+
+    if (s1.size())
+      return false;
+
+    return true;
+
+}
