@@ -20,7 +20,7 @@ class Node {
 
 class Stack {
     
-	   Node *head;
+      Node *head;
       int size;
       
       public:
