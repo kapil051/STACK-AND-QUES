@@ -1,0 +1,57 @@
+class Queue {
+	Node *head;
+    Node *tail;
+    int size;
+   public:
+    Queue() {
+	head=NULL;
+        tail=NULL;
+        size=0;
+	}
+	
+	/*----------------- Public Functions of Stack -----------------*/
+
+	int getSize() {
+		return size;
+	}
+
+    bool isEmpty() {
+		if(size==0){
+            return true;
+        }
+        return false;
+	}
+
+    void enqueue(int data) {
+		Node *newnode=new Node(data);
+        if(head==NULL){
+           head=newnode;
+            tail=newnode;
+            size++;
+         }
+        else{
+            tail->next=newnode;
+            tail=newnode;
+            size++;
+        }
+	}
+
+    int dequeue() {
+   if(head==NULL){
+      return -1;
+          }
+        int ans=head->data;
+        head=head->next;
+        size--;
+        return ans;
+    
+    }
+
+    int front() {
+        if(head==NULL){
+            return -1;
+        }
+    return head->data;
+    }
+    
+};
